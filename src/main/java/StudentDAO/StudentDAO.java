@@ -33,6 +33,22 @@ public class StudentDAO {
 			return ps.executeUpdate();	
 		}
 		
+		// edit student
+		public static StudentDTO editStudent(int id) throws ClassNotFoundException, SQLException
+		{
+			Connection con=con();
+			PreparedStatement ps=con.prepareStatement("select * from student where id=?");
+			ps.setInt(1, id);
+			ResultSet rs=ps.executeQuery();
+			
+			StudentDTO s=null;
+			if(rs.next())
+			{
+			    s=new StudentDTO(rs.getInt("id"), rs.getString("name"), rs.getDouble("physics"), rs.getDouble("chemistry"), rs.getDouble("maths"));
+			}
+			return s;
+		}
+		
 		// delete Student
 		public static int deleteStudent(int id) throws ClassNotFoundException, SQLException
 		{
@@ -70,6 +86,21 @@ public class StudentDAO {
 				sl.add(s);
 			}
 			return sl;
+		}
+		
+		//update student
+		public static int updateStudent(StudentDTO s) throws ClassNotFoundException, SQLException
+		{
+			Connection con=con();
+			PreparedStatement ps=con.prepareStatement("update student set name=? , physics=? , chemistry=?, maths=? where id=?");
+			ps.setString(1, s.getName());
+			ps.setDouble(2, s.getPhysics());
+			ps.setDouble(3, s.getChemistry());
+			ps.setDouble(4, s.getMaths());
+			ps.setInt(5, s.getId());
+			int row=ps.executeUpdate();
+			
+			return row;
 		}
 }
 

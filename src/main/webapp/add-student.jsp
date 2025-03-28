@@ -4,9 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin signup</title>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+<title> add student </title>
 </head>
 <style>
  body {
@@ -17,7 +15,7 @@
         #container {
             background: white;
             padding: 20px;
-            max-width: 400px;
+            max-width: 300px;
             margin: auto;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -46,12 +44,12 @@
           background: #d9ffb3;
           color:blue;
           display: inline-block;
-          width: 300px;
+          width: 160px;
           border:2px solid red;
           border-radius:20px;
           position:relative;
           left:470px;
-          padding:10px 20px;
+          padding:10px 90px;
         }
                 a{
         background: #d9ffb3;
@@ -72,11 +70,12 @@
          }
     </style>
 <body>
-<h2>   Admin Sign-up Page</h2>
-<div id="container"> 
 
-<form action="adminSignUp" method="post" onsubmit="return validatePasswords()">
+<h2> Add Student </h2>
+<div id="container">
 
+<form action="AddStudent" method="post">
+   
 <table>
 <tr>
       <td><label for="id">ID :</label></td>
@@ -87,65 +86,23 @@
       <td><input type="text" name="name" required></td> 
 </tr>
 <tr>
-     <td><label for="contact">Contact :</label></td>
-     <td><input type="number" name="contact" required></td>
+     <td><label for="physics">Physics :</label></td>
+     <td><input type="number" name="physics" required></td>
 </tr>
 <tr>
-     <td><label for="gmail">Gmail :</label></td>
-     <td><input type="text" name="gmail" required></td>
+     <td><label for="chemistry">Chemistry :</label></td>
+     <td><input type="number" name="chemistry" required></td>
 </tr>
 <tr>
-     <td><label for="pass1">PassWord :</label></td>
-     <td><input type="password" placeholder="Enter Password" name="pass1" id="one" required></td>
-</tr>
-<tr>
-     <td><label for="pass2">RE-PassWord :</label></td>
-     <td><input type="password" placeholder="Enter RE Password" name="pass2" id="two" required></i></td>
-     <td> <i class="fa-solid fa-eye-slash" id="eye"> <td>
+     <td><label for="maths">Maths :</label></td>
+     <td><input type="number"  name="maths" required></td>
 </tr>
 </table>
      <br>
      <input type="submit" value="Submit">
-</form>
-  
-</div>
-
-<script>
-     // verify the both passwords are crt 
-function validatePasswords() {
-    var pass1 = document.getElementById("one").value;
-    var pass2 = document.getElementById("two").value;
-
-    if (pass1 !== pass2) {
-        alert("Passwords does not match! Please enter again.");
-        return false; 
-    }
-    return true; 
-}
-
-   // check both passwords are crt
-var icon = document.getElementById("eye");
-icon.addEventListener("click", function() {
-    var pass1 = document.getElementById("one");
-    var pass2 = document.getElementById("two");
-
     
-    if (pass1.type === "password" && pass2.type === "password") {
-        pass1.type = "text";
-        pass2.type = "text";
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
-    } else {
-        pass1.type = "password";
-        pass2.type = "password";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
-    }
-});
-
-
-
-</script>
-
+    
+</form>
+</div>
 </body>
 </html>

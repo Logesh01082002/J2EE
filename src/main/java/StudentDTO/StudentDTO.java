@@ -15,6 +15,7 @@ public class StudentDTO {
 		this.physics = physics;
 		this.maths = maths;
 	}
+	
 	// getter and setter methods
 	public int getId() {
 		return id;
