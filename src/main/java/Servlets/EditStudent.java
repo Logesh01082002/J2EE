@@ -21,10 +21,11 @@ public class EditStudent extends HttpServlet{
 		int id=Integer.parseInt(id1);
 		
 		try {
-			StudentDTO student=StudentDAO.editStudent(id);
+			StudentDTO student=StudentDAO.findStudent(id);
 			 req.setAttribute("student", student); 
 			 System.out.println(student);
-			req.getRequestDispatcher("edit-student.jsp").include(req, resp);;
+			req.setAttribute("delete", "student data edited succesfull!");
+			req.getRequestDispatcher("edit-student.jsp").include(req, resp);
 		} 
 		catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

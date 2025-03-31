@@ -46,6 +46,8 @@
         padding: 10px 20px;
         text-decoration: none;
         margin-top: 20px;
+        position:relative;
+        left:-300px;
     }
     #but{
     color :red;
@@ -62,6 +64,23 @@
          padding: 10px 20px;
         text-decoration: none;
     }
+    #lo{
+     display: inline-block;
+        background: #669999;
+        border: 2px solid red;
+         padding: 10px 20px;
+        text-decoration: none;
+        position:relative;
+        top:-40px;
+        left:300px;
+    }
+      .mess{
+            display: inline-block;
+            width: 300px;
+            position:relative;
+            left:0px;
+            top:5px;
+         }
   </style>
 </head>
 <body>
@@ -77,8 +96,8 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>physics</th>
                 <th>chemistry</th>
+                 <th>physics</th>
                 <th>Maths</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -89,8 +108,8 @@
                 <tr>
                     <td><%= student.getId() %></td>
                     <td><%= student.getName() %></td>
+                    <td><%= student.getChemistry()%></td>
                     <td><%= student.getPhysics() %></td>
-                    <td><%= student.getChemistry() %></td>
                     <td><%= student.getMaths() %></td>
                     <td>
                         <form action="EditStudent" method="post">
@@ -114,8 +133,15 @@
     <%
         }
     %>
+    <% String mess = (String) request.getAttribute("delete"); %>
+    <% if (mess != null) { %>
+        <p class="mess" style="color: red; text-align: center;"><%= mess %></p>
+    <% } %>
 
     <br>
         <a id="addstudent" href="add-student.jsp">Add Student</a>
+        <form action="Logout" method="post">
+               <button type="submit" id="lo">Logout</button>
+         </form>
 </body>
 </html>

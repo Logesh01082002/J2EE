@@ -27,7 +27,7 @@
             width: 100%;
             padding: 8px;
         }
-        input[type="submit"],button {
+        input[type="submit"],button{
             background: #007bff;
             color: white;
             cursor: pointer;
@@ -38,6 +38,14 @@
         }
         button:hover {
             background: #0056b3;
+        }
+        a:hover{
+        background: #0056b3;
+        }
+        a{
+         cursor: pointer;
+          text-decoration: none;
+          color: white;
         }
         h2{
           background: #d9ffb3;
@@ -50,16 +58,17 @@
           left:470px;
           padding:10px 20px;
         }
-                a{
-        background: #d9ffb3;
-        border:2px solid red;
-         border-radius:20px;
-         padding:10px 20px;
-         text-decoration: none;
-         position:relative;
-         }
+            
          .c2{
          width:270px;}
+         .error{
+            display: inline-block;
+            width: 300px;
+            position:relative;
+            left:60px;
+            top:5px;
+         }
+         
     </style>
 
 </style>
@@ -67,25 +76,32 @@
 <body>
 
 <div id="container">
+    <form action="LoginAdmin" method="post">
+        <table>
+            <tr>
+                <td><label for="gmail"> Email:</label></td>
+                <td class="c2"><input type="text" name="gmail" required></td>
+            </tr>
+            <tr>
+                <td><label for="password"> Password:</label></td>
+                <td class="c2"><input type="password" name="password" required></td>
+            </tr>
+        </table>   
+         <% String mess = (String) request.getAttribute("message"); %>
+    <% if (mess != null) { %>
+        <p class="error" style="color: red; text-align: center;"><%= mess %></p>
+    <% } %>
 
-<form action="LoginAdmin" method="post">
-<table>
-<tr>
-    <td> <label for="gmail"> Email:      </label> </td>
-    <td class="c2"> <input type="text" name="gmail" required></td>
-</tr>
-<tr>
-     <td> <label for="password"> PassWord :</label> </td>
-     <td class="c2"> <input type="text" name="password" required></td>
-</tr>
-</table>   <br>
-
-<input type="submit" value="submit">
-   <br>
-            <button type="button" onclick="window.location.href='admin-signup.jsp'">Sign Up</button>
-
-</form>
+    <% String mess1 = (String) request.getAttribute("message1"); %>
+    <% if (mess1 != null) { %>
+        <p class="error" style="color: red; text-align: center;"><%= mess1 %></p>
+    <% } %>
+        <input type="submit" value="Submit">
+        <br>
+        <button><a href="admin-signup.jsp">Sign up</a></button>
+    </form>
 
 </div>
+
 </body>
 </html>

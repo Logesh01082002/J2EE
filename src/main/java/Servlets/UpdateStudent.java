@@ -19,16 +19,16 @@ public class UpdateStudent extends HttpServlet
 	
 		String id1=req.getParameter("id");
 		String name=req.getParameter("name");
-		String physics1=req.getParameter("physics");
 		String chemistry1=req.getParameter("chemistry");
+		String physics1=req.getParameter("physics");
 		String maths1=req.getParameter("maths");
 		
 		int id=Integer.parseInt(id1);
-		double physics=Double.parseDouble(maths1);
+		double physics=Double.parseDouble(physics1);
 		double chemistry=Double.parseDouble(chemistry1);
 		double maths=Double.parseDouble(maths1);
 		 
-		StudentDTO s=new StudentDTO(id, name, physics, chemistry, maths);
+		StudentDTO s=new StudentDTO(id, name, chemistry, physics, maths);
 		
 		try {
 			int row=StudentDAO.updateStudent(s);

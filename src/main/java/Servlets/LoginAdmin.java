@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/LoginAdmin")
 public class LoginAdmin extends HttpServlet {
@@ -30,12 +31,15 @@ public class LoginAdmin extends HttpServlet {
                 System.out.println("DB Password: " + dbpass);
 
                 if (pass.equals(dbpass)) {
+                	HttpSession ses=req.getSession();
                     req.getRequestDispatcher("adminhome.jsp").include(req, res);
                 } else {
-                    res.getWriter().println("Invalid password!");
+                	req.setAttribute("message", "Invalid Credential");
+                	req.getRequestDispatcher("adminlogin.jsp").forward(req, res);
                 }
             } else {
-                res.getWriter().println("No account found with this email!");
+            	req.setAttribute("message1", "No account found with this email!");
+            	req.getRequestDispatcher("adminlogin.jsp").forward(req, res);
             }
 
             rs.close();

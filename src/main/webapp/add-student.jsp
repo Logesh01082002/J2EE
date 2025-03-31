@@ -100,6 +100,10 @@
 </table>
      <br>
      <input type="submit" value="Submit">
+      <% String del = (String) request.getAttribute("delete"); %>
+    <% if (del != null) { %>
+        <p class="mess" style="color: red; text-align: center;"><%= del %></p>
+    <% } %>
     
     
 </form>

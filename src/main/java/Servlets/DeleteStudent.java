@@ -23,8 +23,11 @@ public class DeleteStudent extends HttpServlet{
 			  int id=Integer.parseInt(id1);
 			  
 			int row=StudentDAO.deleteStudent(id);
-			req.getRequestDispatcher("adminhome.jsp").include(req, resp);;
-			
+			if(row>0)
+			{
+				req.setAttribute("delete", "student data delete succesfull!");
+				req.getRequestDispatcher("adminhome.jsp").include(req, resp);
+			}
 		} 
 		  catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

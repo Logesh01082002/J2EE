@@ -37,6 +37,8 @@ public class AddStudent extends HttpServlet{
 		} 
 		catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			req.setAttribute("delete", "student id is already present..");
+			req.getRequestDispatcher("add-student.jsp").include(req, resp);
 		}
 		 
 	}

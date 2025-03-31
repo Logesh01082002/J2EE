@@ -53,7 +53,7 @@
 
 <div id="container">
 <a href="adminlogin.jsp"> ADMIN</a>
-<a href="findStudent.html"> STUDENT</a>
+<a href="add-student.jsp"> STUDENT</a>
 </div>
 
 </body>

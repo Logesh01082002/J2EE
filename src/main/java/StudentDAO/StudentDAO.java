@@ -44,7 +44,7 @@ public class StudentDAO {
 			StudentDTO s=null;
 			if(rs.next())
 			{
-			    s=new StudentDTO(rs.getInt("id"), rs.getString("name"), rs.getDouble("physics"), rs.getDouble("chemistry"), rs.getDouble("maths"));
+			    s=new StudentDTO(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5));
 			}
 			return s;
 		}
@@ -92,10 +92,10 @@ public class StudentDAO {
 		public static int updateStudent(StudentDTO s) throws ClassNotFoundException, SQLException
 		{
 			Connection con=con();
-			PreparedStatement ps=con.prepareStatement("update student set name=? , physics=? , chemistry=?, maths=? where id=?");
+			PreparedStatement ps=con.prepareStatement("update student set name=? , chemistry=? , physics=?, maths=? where id=?");
 			ps.setString(1, s.getName());
-			ps.setDouble(2, s.getPhysics());
-			ps.setDouble(3, s.getChemistry());
+			ps.setDouble(2, s. getChemistry());
+			ps.setDouble(3, s.getPhysics());
 			ps.setDouble(4, s.getMaths());
 			ps.setInt(5, s.getId());
 			int row=ps.executeUpdate();

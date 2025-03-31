@@ -84,12 +84,12 @@
       <td><input type="text" name="name" required value="<%= s.getName() %>"></td> 
 </tr>
 <tr>
-     <td><label for="physics">Physics :</label></td>
-     <td><input type="number" name="physics" required value="<%= s.getPhysics() %>"></td>
+     <td><label for="chemistry">chemistry :</label></td>
+     <td><input type="number" name="chemistry" required value="<%= s.getChemistry()%>"></td>
 </tr>
 <tr>
-     <td><label for="chemistry">Chemistry :</label></td>
-     <td><input type="number" name="chemistry" required value="<%= s.getChemistry() %>"></td>
+     <td><label for="physics">Physics :</label></td>
+     <td><input type="number" name="physics" required value="<%= s.getPhysics()  %>"></td>
 </tr>
 <tr>
      <td><label for="maths">Maths :</label></td>
