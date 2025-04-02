@@ -74,7 +74,7 @@
 <h2> Add Student </h2>
 <div id="container">
 
-<form action="AddStudent" method="post">
+<form action="AddStudent" method="post" enctype="multipart/form-data">
    
 <table>
 <tr>
@@ -90,12 +90,16 @@
      <td><input type="number" name="physics" required></td>
 </tr>
 <tr>
-     <td><label for="chemistry">Chemistry :</label></td>
+     <td><label for="chemistry">Chemistry:</label></td>
      <td><input type="number" name="chemistry" required></td>
 </tr>
 <tr>
      <td><label for="maths">Maths :</label></td>
      <td><input type="number"  name="maths" required></td>
+</tr>
+<tr>
+    <td> <label for="photo">Photo:</label></td>
+    <td> <input type="file" name="photo" accept="image/*" ></td>
 </tr>
 </table>
      <br>

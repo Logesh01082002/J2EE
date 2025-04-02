@@ -1,5 +1,8 @@
 package Servlets;
 import StudentDAO.AdminDAO;
+import StudentDAO.StudentDAO;
+import StudentDTO.StudentDTO;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,28 +25,17 @@ public class LoginAdmin extends HttpServlet {
         System.out.println(gmail);
         try {
             Connection con = AdminDAO.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT password FROM admin WHERE gmail = ?");
-            ps.setString(1, gmail);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) { 
-                String dbpass = rs.getString("password");  
-                System.out.println("DB Password: " + dbpass);
-
-                if (pass.equals(dbpass)) {
+	    	 boolean s= AdminDAO.findAdmin(gmail,pass);
+			
+               if (s)
+                { 
                 	HttpSession ses=req.getSession();
                     req.getRequestDispatcher("adminhome.jsp").include(req, res);
                 } else {
                 	req.setAttribute("message", "Invalid Credential");
                 	req.getRequestDispatcher("adminlogin.jsp").forward(req, res);
                 }
-            } else {
-            	req.setAttribute("message1", "No account found with this email!");
-            	req.getRequestDispatcher("adminlogin.jsp").forward(req, res);
-            }
-
-            rs.close();
-            ps.close();
+               
             con.close();
 
         } catch (NumberFormatException e) {
@@ -51,7 +43,9 @@ public class LoginAdmin extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
             res.getWriter().println("Database error: " + e.getMessage());
-        }
+        } catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
     }
 }
 //

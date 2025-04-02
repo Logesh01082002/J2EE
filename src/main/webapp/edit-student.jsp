@@ -73,7 +73,7 @@
   %>
 <div id="container">
 <h2> Edit Student</h2>
-    <form action="UpdateStudent" method="post">    
+    <form action="UpdateStudent" method="post" enctype="multipart/form-data">    
 <table>
 <tr>
       <td><label for="id">ID :</label></td>
@@ -95,6 +95,10 @@
      <td><label for="maths">Maths :</label></td>
      <td><input type="number"  name="maths" required value="<%= s.getMaths() %>"></td>
 </tr>
+     <td> <label for="photo">Photo:</label></td>
+    <td> <input type="file" name="photo" value="<%= s.getPhoto() %>" accept="image/*" ></td>
+<tr>
+
 </table>
      <br>
      <input type="submit" value="Submit">

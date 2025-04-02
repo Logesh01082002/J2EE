@@ -36,13 +36,13 @@ public class AdminDAO {
 	}
 	
 	// find admin
-	public boolean findAdmin(String gmail,String password) throws ClassNotFoundException, SQLException
+	public static boolean findAdmin(String gmail,String password) throws ClassNotFoundException, SQLException
 	{
 		Connection con=getConnection();
 		PreparedStatement ps=con.prepareStatement("select * from admin where gmail = ? and password = ? ");
 		ps.setString(1,gmail);
 		ps.setString(2, password);
-		ResultSet rs=ps.executeQuery();
-		return rs.next() ? true : false;
+		boolean rs=ps.execute();
+		return rs;
 	}
 }

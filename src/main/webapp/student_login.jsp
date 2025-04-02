@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>admin login page</title>
+<title>student login page</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
  body {
@@ -103,6 +103,10 @@
         <p class="error" style="color: red; text-align: center;"><%= mess %></p>
     <% } %>
 
+    <% String mess1 = (String) request.getAttribute("message1"); %>
+    <% if (mess1 != null) { %>
+        <p class="error" style="color: red; text-align: center;"><%= mess1 %></p>
+    <% } %>
         <input type="submit" value="Submit">
         <br>
         <button><a href="admin-signup.jsp">Sign up</a></button>

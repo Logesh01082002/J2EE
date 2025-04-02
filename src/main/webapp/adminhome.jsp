@@ -1,3 +1,4 @@
+<%@page import="java.util.Base64"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="StudentDAO.StudentDAO, StudentDTO.StudentDTO, java.util.List"%>
 
@@ -80,6 +81,10 @@
             position:relative;
             left:0px;
             top:5px;
+            
+         }
+         h3{
+         color:blue;
          }
   </style>
 </head>
@@ -95,6 +100,7 @@
         <table border="1">
             <tr>
                 <th>ID</th>
+                <th>Profile</th>
                 <th>Name</th>
                 <th>chemistry</th>
                  <th>physics</th>
@@ -107,10 +113,14 @@
             %>
                 <tr>
                     <td><%= student.getId() %></td>
+                    <% String image = Base64.getEncoder().encodeToString(student.getPhoto().readAllBytes()); %>
+                   <!--  <td> <img src="data:image/jpg;<%=image %>>" alt="Profile" width="50" height="50" style="border-radius: 50%;">  </td>  -->
+                   <td> <img src="data:image/jpeg;base64,<%= image %>" alt="Profile" width="70" height="50">  </td> 
                     <td><%= student.getName() %></td>
                     <td><%= student.getChemistry()%></td>
                     <td><%= student.getPhysics() %></td>
                     <td><%= student.getMaths() %></td>
+                    
                     <td>
                         <form action="EditStudent" method="post">
                            <input type="hidden" name="id" value="<%= student.getId() %>">

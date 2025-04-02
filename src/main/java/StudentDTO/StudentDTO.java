@@ -1,19 +1,24 @@
 package StudentDTO;
+
+import java.io.InputStream;
+
 public class StudentDTO {
 	private int id;
 	private String name;
 	private double chemistry;
 	private double physics;
 	private double maths;
+	private InputStream photo;
 	
 	// constructor
-	public StudentDTO(int id, String name, double chemistry, double physics, double maths) {
+	public StudentDTO(int id, String name, double chemistry, double physics, double maths,InputStream photo) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.chemistry = chemistry;
 		this.physics = physics;
 		this.maths = maths;
+		this.photo=photo;
 	}
 	
 	// getter and setter methods
@@ -51,4 +56,12 @@ public class StudentDTO {
 	public void setMaths(double maths) {
 		this.maths = maths;
 	}
+	
+	public InputStream getPhoto() {
+		return photo;
+	}
+	public void setPhoto(InputStream photo) {
+		this.photo = photo;
+	}
+
 }

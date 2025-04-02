@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import StudentDAO.StudentDAO;
 import StudentDTO.StudentDTO;
 
 @WebServlet("/EditStudent")
+@MultipartConfig(maxFileSize = 1024 * 1024 * 5)
 public class EditStudent extends HttpServlet{
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,7 +25,7 @@ public class EditStudent extends HttpServlet{
 		try {
 			StudentDTO student=StudentDAO.findStudent(id);
 			 req.setAttribute("student", student); 
-			 System.out.println(student);
+			 System.out.println(student+" edit success ");
 			req.setAttribute("delete", "student data edited succesfull!");
 			req.getRequestDispatcher("edit-student.jsp").include(req, resp);
 		} 
