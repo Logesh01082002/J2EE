@@ -26,6 +26,7 @@ public class UpdateStudent extends HttpServlet
 		String chemistry1=req.getParameter("chemistry");
 		String physics1=req.getParameter("physics");
 		String maths1=req.getParameter("maths");
+		String gmail=req.getParameter("gmail");
 		
 		Part photo=req.getPart("photo");
 		InputStream pis=photo.getInputStream();
@@ -36,7 +37,7 @@ public class UpdateStudent extends HttpServlet
 		double chemistry=Double.parseDouble(chemistry1);
 		double maths=Double.parseDouble(maths1);
 		 
-		StudentDTO s=new StudentDTO(id, name, chemistry, physics, maths,pis);
+		StudentDTO s=new StudentDTO(id, name, chemistry, physics, maths,pis,gmail);
 		
 		if (pis != null) {
 			try {

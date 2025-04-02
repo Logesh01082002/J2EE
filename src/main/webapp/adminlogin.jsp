@@ -9,11 +9,14 @@
 <style>
  body {
             font-family: Arial, sans-serif;
-            margin: 150px;
-             background-image: url('images/login bg.jpg'); 
-              background-size: cover;
-             background-position: center;
-              background-repeat: no-repeat;
+              background: linear-gradient(to right, #74ebd5, #acb6e5); 
+             display: flex;
+             padding-left:170px;
+             justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            animation: fadeIn 0.8s ease-in-out;
         }
         #container {
             background: white;
@@ -22,12 +25,14 @@
             margin: auto;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.6s ease-in-out;
         }
         label, input {
             display: block;
             margin-top: 10px;
+            transition: border 0.3s ease-in-out;
         }
-        input ,button{
+        input ,#but{
             width: 100%;
             padding: 8px;
         }
@@ -37,19 +42,27 @@
             cursor: pointer;
             margin-top: 5px;
         }
+         input:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5);
+        }
         input[type="submit"]:hover {
             background: #0056b3;
         }
-        button:hover {
+        #but:hover {
             background: #0056b3;
+             transform: scale(1.05);
         }
         a:hover{
         background: #0056b3;
+         transition: color 0.3s ease-in-out;
         }
         a{
          cursor: pointer;
           text-decoration: none;
           color: white;
+          padding:8px 28px;
         }
         h2{
           background: #d9ffb3;
@@ -64,18 +77,52 @@
          .c2{
          width:270px;}
          .error{
-            display: inline-block;
-            width: 300px;
+            
             position:relative;
-            left:60px;
+            left:10px;
             top:5px;
+            color: red;
+            font-size: 20px;
+            margin-top: 10px;
+            display: none;
          }
+         
          #eye{
           position:relative;
           left:30px;
           top:6px;
          }
-         
+         #but2{
+         position:relative;
+         left:-610px;
+         top:220px;
+         padding:10px 15px;
+         background-color:grey;
+          transition: background 0.3s ease-in-out, transform 0.2s;
+         }
+          /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+ 
     </style>
 
 </style>
@@ -93,23 +140,23 @@
             <tr>
                 <td><label for="password"> Password:</label></td>
                 <td class="c2" ><input type="password" id="pass" name="password" required></td>
-                <td> <i class="fa-solid fa-eye-slash" id="eye"></i> <td>
+                <td> <i class="fa-solid fa-eye-slash" id="eye"></i> </td>
             </tr>
         </table>   
         </br>
         
          <% String mess = (String) request.getAttribute("message"); %>
-    <% if (mess != null) { %>
-        <p class="error" style="color: red; text-align: center;"><%= mess %></p>
+    <% if (mess != null && !mess.trim().isEmpty()) { %>
+        <p id="errorMessage" class="error" style="color: red; text-align: center;"><%= mess %></p>
     <% } %>
 
         <input type="submit" value="Submit">
         <br>
-        <button><a href="admin-signup.jsp">Sign up</a></button>
+        <button id="but"><a href="admin-signup.jsp">Sign up</a></button>
     </form>
-
 </div>
-<script>
+       <button id="but2"><a href="index.jsp">Back</a></button>
+<script> 
 
 //Password visibility toggle
 var icon = document.getElementById("eye");
@@ -125,6 +172,17 @@ icon.addEventListener("click", function() {
         pass1.type = "password";
         icon.classList.remove("fa-eye");
         icon.classList.add("fa-eye-slash");
+    }
+});
+
+// Show error message with animation if present
+document.addEventListener("DOMContentLoaded", function() {
+    let errorMessage = document.getElementById("errorMessage");
+    if (errorMessage && errorMessage.innerText.trim() !== "") {
+        errorMessage.style.display = "block";  // Show error message
+        setTimeout(function() {
+            errorMessage.style.display = "none"; // Hide error message after 5 seconds
+        }, 5000);
     }
 });
 

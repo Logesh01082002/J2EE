@@ -26,10 +26,11 @@ public class LoginAdmin extends HttpServlet {
         try {
             Connection con = AdminDAO.getConnection();
 	    	 boolean s= AdminDAO.findAdmin(gmail,pass);
-			
+			      System.out.println(s);
                if (s)
                 { 
                 	HttpSession ses=req.getSession();
+                	 req.removeAttribute("message");
                     req.getRequestDispatcher("adminhome.jsp").include(req, res);
                 } else {
                 	req.setAttribute("message", "Invalid Credential");

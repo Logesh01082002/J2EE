@@ -9,13 +9,16 @@
  body {
             font-family: Arial, sans-serif;
             margin: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: #f4f4f4;
         }
         #container {
             background: white;
             padding: 20px;
-            max-width: 300px;
-            margin: auto;
+            width: 390px;
+            margin: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -45,8 +48,8 @@
           display: inline-block;
           width: 150px;
           border:2px solid red;
-          border-radius:20px;
-          padding:10px 75px;
+          border-radius:10px;
+          padding:10px 119px;
         }
          a{
         background: #d9ffb3;
@@ -84,7 +87,7 @@
       <td><input type="text" name="name" required value="<%= s.getName() %>"></td> 
 </tr>
 <tr>
-     <td><label for="chemistry">chemistry :</label></td>
+     <td><label for="chemistry">chemistry:</label></td>
      <td><input type="number" name="chemistry" required value="<%= s.getChemistry()%>"></td>
 </tr>
 <tr>

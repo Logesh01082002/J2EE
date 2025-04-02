@@ -12,7 +12,8 @@
  body {
             font-family: Arial, sans-serif;
             margin: 50px;
-            background-color: #f4f4f4;
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+
         }
         #container {
             background: white;
@@ -54,12 +55,10 @@
           padding:10px 20px;
         }
                 a{
-        background: #d9ffb3;
-        border:2px solid red;
-         border-radius:20px;
+         color:white;
          padding:10px 20px;
          text-decoration: none;
-         position:relative;
+    
          }
          .c2{
          width:270px;}
@@ -70,6 +69,20 @@
           left:40px;
           top:8px;
          }
+          .password-match {
+            font-size: 14px;
+            margin-top: 5px;   
+            font-weight: bold;
+            text-align:center;
+        }
+
+        .password-match.error {
+            color: red;
+        }
+
+        .password-match.success {
+            color: green;
+        }
     </style>
 <body>
 <h2>   Admin Sign-up Page</h2>
@@ -88,11 +101,11 @@
 </tr>
 <tr>
      <td><label for="contact">Contact :</label></td>
-     <td><input type="number" name="contact" required></td>
+     <td><input type="tel" name="contact" placeholder="+91 234-567-8901" pattern="[0-9]{10}" required></td>
 </tr>
 <tr>
      <td><label for="gmail">Gmail :</label></td>
-     <td><input type="text" name="gmail" required></td>
+     <td><input type="email" name="gmail"  placeholder="example@gmail.com" required></td>
 </tr>
 <tr>
      <td><label for="pass1">PassWord :</label></td>
@@ -100,13 +113,16 @@
 </tr>
 <tr>
      <td><label for="pass2">RE-PassWord :</label></td>
-     <td><input type="password" placeholder="Enter RE Password" name="pass2" id="two" required></i></td>
+     <td><input type="password" placeholder="Enter RE Password" name="pass2" id="two" onkeyup="passwordCheck()" required></i></td>
      <td> <i class="fa-solid fa-eye-slash" id="eye"> <td>
+     
 </tr>
 </table>
-     <br>
+                   <p class="password-match" id="passwordMessage"></p>
+     
      <input type="submit" value="Submit">
 </form>
+     <button id="but2"><a href="adminlogin.jsp">Back</a></button>
   
 </div>
 
@@ -121,14 +137,13 @@ function validatePasswords() {
         return false; 
     }
     return true; 
-}
+} 
 
-   // check both passwords are crt
+   // check eye  
 var icon = document.getElementById("eye");
 icon.addEventListener("click", function() {
     var pass1 = document.getElementById("one");
     var pass2 = document.getElementById("two");
-
     
     if (pass1.type === "password" && pass2.type === "password") {
         pass1.type = "text";
@@ -142,8 +157,23 @@ icon.addEventListener("click", function() {
         icon.classList.add("fa-eye-slash");
     }
 });
+     
+function passwordCheck() {
+    const pass = document.getElementById("one").value;
+    const repass = document.getElementById("two").value;
+    const message = document.getElementById("passwordMessage");
 
-
+    if (pass.length < 6) {
+        message.textContent = "Password must be at least 6 characters.";
+        message.className = "password-match error";
+    } else if (pass !== repass) {
+        message.textContent = "Passwords do not match ❌";
+        message.className = "password-match error";
+    } else {
+        message.textContent = "Passwords match ✅";
+        message.className = "password-match success";
+    }
+}
 
 </script>
 

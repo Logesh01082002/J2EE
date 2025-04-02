@@ -10,12 +10,14 @@
  body {
             font-family: Arial, sans-serif;
             margin: 50px;
-            background-color: #f4f4f4;
+            background: linear-gradient(to right, #84fab0, #8fd3f4);
+
+
         }
         #container {
             background: white;
             padding: 20px;
-            max-width: 300px;
+            max-width: 380px;
             margin: auto;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -46,18 +48,15 @@
           display: inline-block;
           width: 160px;
           border:2px solid red;
-          border-radius:20px;
-          position:relative;
-          left:470px;
-          padding:10px 90px;
+          border-radius:10px;
+        
+          padding:10px 110px;
         }
                 a{
-        background: #d9ffb3;
-        border:2px solid red;
-         border-radius:20px;
+         color:white;
          padding:10px 20px;
          text-decoration: none;
-         position:relative;
+
          }
          .c2{
          width:270px;}
@@ -71,9 +70,9 @@
     </style>
 <body>
 
-<h2> Add Student </h2>
-<div id="container">
 
+<div id="container">
+<h2> Add Student </h2>
 <form action="AddStudent" method="post" enctype="multipart/form-data">
    
 <table>
@@ -98,12 +97,18 @@
      <td><input type="number"  name="maths" required></td>
 </tr>
 <tr>
+     <td><label for="gmail">Gmail :</label></td>
+     <td><input type="email"  name="gmail" required></td>
+</tr>
+<tr>
     <td> <label for="photo">Photo:</label></td>
     <td> <input type="file" name="photo" accept="image/*" ></td>
 </tr>
+
 </table>
      <br>
      <input type="submit" value="Submit">
+     <button><a href="adminhome.jsp">Back</a></button>
       <% String del = (String) request.getAttribute("delete"); %>
     <% if (del != null) { %>
         <p class="mess" style="color: red; text-align: center;"><%= del %></p>

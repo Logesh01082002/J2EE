@@ -28,6 +28,7 @@ public class AddStudent extends HttpServlet{
 		String chemistry1=req.getParameter("chemistry");
 		String physics1=req.getParameter("physics");
 		String maths1=req.getParameter("maths");
+		String gmail=req.getParameter("gmail");
 		
 		int id=Integer.parseInt(id1);
 		double chemistry=Double.parseDouble(chemistry1);
@@ -37,7 +38,7 @@ public class AddStudent extends HttpServlet{
 		Part photo=req.getPart("photo");
 		InputStream pis=photo.getInputStream();
 		
-		StudentDTO s=new StudentDTO(id,name,chemistry,physics,maths,pis);
+		StudentDTO s=new StudentDTO(id,name,chemistry,physics,maths,pis,gmail);
 		try {
 			int row=StudentDAO.saveStudent(s);
 			req.getRequestDispatcher("adminhome.jsp").include(req, resp);

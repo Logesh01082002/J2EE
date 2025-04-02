@@ -9,9 +9,10 @@ public class StudentDTO {
 	private double physics;
 	private double maths;
 	private InputStream photo;
+	private String gmail;
 	
 	// constructor
-	public StudentDTO(int id, String name, double chemistry, double physics, double maths,InputStream photo) {
+	public StudentDTO(int id, String name, double chemistry, double physics, double maths,InputStream photo,String gmail) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -19,6 +20,7 @@ public class StudentDTO {
 		this.physics = physics;
 		this.maths = maths;
 		this.photo=photo;
+		this.gmail=gmail;
 	}
 	
 	// getter and setter methods
@@ -62,6 +64,13 @@ public class StudentDTO {
 	}
 	public void setPhoto(InputStream photo) {
 		this.photo = photo;
+	}
+	
+	public String getGmail() {
+		return gmail;
+	}
+	public void setGmail(String gmail) {
+		this.gmail = gmail;
 	}
 
 }

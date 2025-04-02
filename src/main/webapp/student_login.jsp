@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
             margin: 150px;
              background-image: url('images/login bg.jpg'); 
-              background-size: cover;
+              background-size: 1500px 820px;
              background-position: center;
               background-repeat: no-repeat;
         }
@@ -75,6 +75,14 @@
           left:30px;
           top:6px;
          }
+          #but{
+        
+        padding: 10px 14px;
+        text-align: center;
+        text-decoration: none;
+        margin:10px 0px;
+   
+        }
          
     </style>
 
@@ -83,17 +91,13 @@
 <body>
 
 <div id="container">
-<h2>Admin Login</h2>
-    <form action="LoginAdmin" method="post">
+<h2>Login Student </h2>
+    <form action="LoginStudent" method="post">
+        
         <table>
             <tr>
-                <td><label for="gmail"> Email:</label></td>
-                <td class="c2"><input type="text" name="gmail" required></td>
-            </tr>
-            <tr>
-                <td><label for="password"> Password:</label></td>
-                <td class="c2" ><input type="password" id="pass" name="password" required></td>
-                <td> <i class="fa-solid fa-eye-slash" id="eye"></i> <td>
+                <td><label for="input"> Email or ID:</label></td>
+                <td class="c2"><input type="text" name="input" required></td>
             </tr>
         </table>   
         </br>
@@ -101,37 +105,15 @@
          <% String mess = (String) request.getAttribute("message"); %>
     <% if (mess != null) { %>
         <p class="error" style="color: red; text-align: center;"><%= mess %></p>
+      
     <% } %>
 
-    <% String mess1 = (String) request.getAttribute("message1"); %>
-    <% if (mess1 != null) { %>
-        <p class="error" style="color: red; text-align: center;"><%= mess1 %></p>
-    <% } %>
         <input type="submit" value="Submit">
+        
+         <button id="but"><a href="index.jsp">back</a></button>
         <br>
-        <button><a href="admin-signup.jsp">Sign up</a></button>
     </form>
 
 </div>
-<script>
-
-//Password visibility toggle
-var icon = document.getElementById("eye");
-var pass1 = document.getElementById("pass");
-
-icon.addEventListener("click", function() {
-    if (pass1.type === "password") 
-    {
-        pass1.type = "text";
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
-    } else {
-        pass1.type = "password";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
-    }
-});
-
-</script>
 </body>
 </html>

@@ -22,7 +22,7 @@ public class DisplayStudentPhoto extends HttpServlet {
 
         try {
             StudentDTO student = StudentDAO.findStudent(id);
-
+            
             if (student != null) {
                 InputStream photoStream = student.getPhoto();
                 

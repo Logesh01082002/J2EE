@@ -42,7 +42,8 @@ public class AdminDAO {
 		PreparedStatement ps=con.prepareStatement("select * from admin where gmail = ? and password = ? ");
 		ps.setString(1,gmail);
 		ps.setString(2, password);
-		boolean rs=ps.execute();
-		return rs;
+		ResultSet rs = ps.executeQuery();
+	    boolean exists = rs.next();
+		return exists; 
 	}
 }

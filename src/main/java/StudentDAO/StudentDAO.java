@@ -24,7 +24,7 @@ public class StudentDAO {
 		public static int saveStudent(StudentDTO s) throws ClassNotFoundException, SQLException
 		{
 			Connection con=con();
-			PreparedStatement ps=con.prepareStatement("insert into student values (?,?,?,?,?,?)");
+			PreparedStatement ps=con.prepareStatement("insert into student values (?,?,?,?,?,?,?)");
 			ps.setInt(1,s.getId());
 			ps.setString(2,s.getName());
 			ps.setDouble(3, s.getChemistry());
@@ -35,6 +35,7 @@ public class StudentDAO {
 		    } else {
 		        ps.setNull(6, java.sql.Types.BLOB);
 		    }
+			ps.setString(7, s.getGmail());
 			return ps.executeUpdate();	
 		}
 
@@ -47,7 +48,7 @@ public class StudentDAO {
 			ps.setDouble(2, s. getChemistry());
 			ps.setDouble(3, s.getPhysics());
 			ps.setDouble(4, s.getMaths());
-			
+		
 			if (s.getPhoto() != null) {
 		        ps.setBlob(5, s.getPhoto());
 		    } else {
@@ -71,7 +72,7 @@ public class StudentDAO {
 			StudentDTO s=null;
 			if(rs.next())
 			{
-			    s=new StudentDTO(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5), rs.getBinaryStream(6));
+			    s=new StudentDTO(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5), rs.getBinaryStream(6), rs.getString(7));
 			}
 			return s;
 		}
@@ -85,7 +86,7 @@ public class StudentDAO {
 			return ps.executeUpdate();
 		}
 		
-		// find student
+		// find student by id
 		public static StudentDTO findStudent(int id) throws ClassNotFoundException, SQLException
 		{
 			Connection con=con();
@@ -94,14 +95,26 @@ public class StudentDAO {
 			ResultSet rs=ps.executeQuery();
 			if(rs.next())
 			{
-				StudentDTO s=new StudentDTO(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getBinaryStream(6));
+				StudentDTO s=new StudentDTO(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getBinaryStream(6), rs.getString(7));
 				return s;
 			}
 			return null;
 		}
-
 		
-		
+		// find student by email
+				public static StudentDTO findStudenyByEmail(String gmail) throws ClassNotFoundException, SQLException
+				{
+					Connection con=con();
+					PreparedStatement ps=con.prepareStatement("select * from student where gmail=?");
+					ps.setString(1, gmail);
+					ResultSet rs=ps.executeQuery();
+					if(rs.next())
+					{
+						StudentDTO s=new StudentDTO(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getBinaryStream(6), rs.getString(7));
+						return s;
+					}
+					return null;
+				}
 		
 		// Find all Student
 		public static List<StudentDTO> findAllStudent() throws SQLException, ClassNotFoundException
@@ -112,14 +125,11 @@ public class StudentDAO {
 			List<StudentDTO> sl=new ArrayList();
 			while(rs.next())
 			{
-				StudentDTO s=new StudentDTO(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getBinaryStream(6));
+				StudentDTO s=new StudentDTO(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getBinaryStream(6), rs.getString(7));
 				sl.add(s);
 			}
 			return sl;
 		}
-		
 }
 
 
-
-//  

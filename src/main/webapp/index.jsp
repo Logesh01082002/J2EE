@@ -10,10 +10,9 @@
             background-color: #f4f4f4;
             text-align: center;
             margin: 50px;
-           
-              background: url(images/signup.jpg);
-              background-repeat: no-repeat;
-              background-size: 1400px 670px;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            
+
         }
         h1 {
             color: #333;
@@ -57,7 +56,7 @@
 
 <div id="container">
 <a href="adminlogin.jsp"> ADMIN</a>
-<a href="student-login.jsp"> STUDENT</a>
+<a href="student_login.jsp"> STUDENT</a>
 </div>
 
 </body>
