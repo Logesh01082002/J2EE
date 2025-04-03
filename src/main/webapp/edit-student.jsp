@@ -51,11 +51,9 @@
           border-radius:10px;
           padding:10px 119px;
         }
-         a{
-        background: #d9ffb3;
-        border:2px solid red;
-         border-radius:20px;
-         padding:10px 20px;
+         a{  
+         padding:10px 140px;
+         color:white;
          text-decoration: none;
          position:relative;
          }
@@ -67,6 +65,13 @@
           position: relative;
           left:40px;
           top:8px;
+         }
+         
+          #but2{
+         position:relative;
+         padding:10px 15px;
+         background-color:grey;
+          transition: background 0.3s ease-in-out, transform 0.2s;
          }
     </style>
 </head>
@@ -92,12 +97,17 @@
 </tr>
 <tr>
      <td><label for="physics">Physics :</label></td>
-     <td><input type="number" name="physics" required value="<%= s.getPhysics()  %>"></td>
+     <td><input type="number" name="physics" required value="<%= s.getPhysics()  %>"  max="100" oninput="validateMarks(this)"></td>
 </tr>
 <tr>
      <td><label for="maths">Maths :</label></td>
-     <td><input type="number"  name="maths" required value="<%= s.getMaths() %>"></td>
+     <td><input type="number"  name="maths" required value="<%= s.getMaths() %>" max="100" oninput="validateMarks(this)"></td>
 </tr>
+<tr>
+     <td><label for="gmail">Gmail :</label></td>
+     <td><input type="email"  name="gmail" required value="<%= s.getGmail() %>"  max="100" oninput="validateMarks(this)"></td>
+</tr>
+<tr>
      <td> <label for="photo">Photo:</label></td>
     <td> <input type="file" name="photo" value="<%= s.getPhoto() %>" accept="image/*" ></td>
 <tr>
@@ -106,6 +116,17 @@
      <br>
      <input type="submit" value="Submit">
     </form>
+    <button id="but2"><a href="index.jsp">Back</a></button>
 </div>
+
+
+<script>
+function validateMarks(input) {
+    if (input.value > 100) {
+        alert("Marks should be less than or equal to 100!");
+        input.value = "";
+    }
+}
+</script>
 </body>
 </html>

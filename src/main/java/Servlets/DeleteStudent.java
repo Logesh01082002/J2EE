@@ -25,7 +25,7 @@ public class DeleteStudent extends HttpServlet{
 			int row=StudentDAO.deleteStudent(id);
 			if(row>0)
 			{
-				req.setAttribute("delete", "student data delete succesfull!");
+				req.setAttribute("delete", "      student data delete succesfull!");
 				req.getRequestDispatcher("adminhome.jsp").include(req, resp);
 			}
 		} 

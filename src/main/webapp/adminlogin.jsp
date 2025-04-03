@@ -35,6 +35,7 @@
         input ,#but{
             width: 100%;
             padding: 8px;
+             transition: color 0.3s ease-in-out;
         }
         input[type="submit"],button{
             background: #007bff;
@@ -46,13 +47,16 @@
             outline: none;
             border-color: #007BFF;
             box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5);
+             transition: color 0.3s ease-in-out;
         }
         input[type="submit"]:hover {
             background: #0056b3;
+             transition: color 0.3s ease-in-out;
         }
         #but:hover {
             background: #0056b3;
              transform: scale(1.05);
+              transition: color 0.3s ease-in-out;
         }
         a:hover{
         background: #0056b3;
@@ -135,11 +139,11 @@
         <table>
             <tr>
                 <td><label for="gmail"> Email:</label></td>
-                <td class="c2"><input type="text" name="gmail" required></td>
+                <td class="c2"><input type="text" name="gmail" required placeholder="enter gmail"></td>
             </tr>
             <tr>
                 <td><label for="password"> Password:</label></td>
-                <td class="c2" ><input type="password" id="pass" name="password" required></td>
+                <td class="c2" ><input type="password" id="pass" name="password" placeholder="enter password" required></td>
                 <td> <i class="fa-solid fa-eye-slash" id="eye"></i> </td>
             </tr>
         </table>   

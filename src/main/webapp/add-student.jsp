@@ -86,15 +86,15 @@
 </tr>
 <tr>
      <td><label for="physics">Physics :</label></td>
-     <td><input type="number" name="physics" required></td>
+     <td><input type="number" name="physics" required max="100" oninput="validateMarks(this)"></td>
 </tr>
 <tr>
      <td><label for="chemistry">Chemistry:</label></td>
-     <td><input type="number" name="chemistry" required></td>
+     <td><input type="number" name="chemistry" required max="100" oninput="validateMarks(this)"></td>
 </tr>
 <tr>
      <td><label for="maths">Maths :</label></td>
-     <td><input type="number"  name="maths" required></td>
+     <td><input type="number"  name="maths" required max="100" oninput="validateMarks(this)"></td>
 </tr>
 <tr>
      <td><label for="gmail">Gmail :</label></td>
@@ -111,11 +111,31 @@
      <button><a href="adminhome.jsp">Back</a></button>
       <% String del = (String) request.getAttribute("delete"); %>
     <% if (del != null) { %>
-        <p class="mess" style="color: red; text-align: center;"><%= del %></p>
+        <p id="mess" style="color: red; text-align: center;"><%= del %></p>
     <% } %>
     
     
 </form>
 </div>
+
+<script>
+function validateMarks(input) {
+    if (input.value > 100) {
+        alert("Marks should be less than or equal to 100!");
+        input.value = "";
+    }
+}
+
+// Show error message with animation if present
+document.addEventListener("DOMContentLoaded", function() {
+    let errorMessage = document.getElementById("mess");
+    if (errorMessage && errorMessage.innerText.trim() !== "") {
+        errorMessage.style.display = "block";  // Show error message
+        setTimeout(function() {
+            errorMessage.style.display = "none"; // Hide error message after 5 seconds
+        }, 5000);
+    }
+});
+</script>
 </body>
 </html>

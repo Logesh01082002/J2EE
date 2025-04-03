@@ -22,6 +22,7 @@
         border-collapse: collapse;
         width: 80%;
         margin-top: 20px;
+        margin-left:25px;
         animation: slideUp 0.6s ease-in-out;
     }
      td {
@@ -93,11 +94,11 @@
         top:-40px;
         left:870px;
     }
-      .mess{
+      #mess{
             display: inline-block;
             width: 300px;
             position:relative;
-            left:280px;
+            left:350px;
             top:5px;
             
          }
@@ -217,7 +218,7 @@
     %>
     <% String mess = (String) request.getAttribute("delete"); %>
     <% if (mess != null) { %>
-        <p class="mess" style="color: red; text-align: center;"><%= mess %></p>
+        <p id="mess" style="color: red; text-align: center;"><%= mess %></p>
     <% } %>
 </div>
     <br>
@@ -230,9 +231,21 @@
     <script>
     function confirmDelete() {
         if (confirm("Are you sure you want to delete this student?")) {
-            
+     
         }
     }
+    
+ // Show error message with animation if present
+    document.addEventListener("DOMContentLoaded", function() {
+        let errorMessage = document.getElementById("mess");
+        if (errorMessage && errorMessage.innerText.trim() !== "") {
+            errorMessage.style.display = "block";  // Show error message
+            setTimeout(function() {
+                errorMessage.style.display = "none"; // Hide error message after 5 seconds
+            }, 5000);
+        }
+    });
+    
     </script>
 </body>
 </html>

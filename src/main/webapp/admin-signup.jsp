@@ -13,7 +13,7 @@
             font-family: Arial, sans-serif;
             margin: 50px;
             background: linear-gradient(to right, #a1c4fd, #c2e9fb);
-
+                   animation: fadeIn 0.8s ease-in-out;
         }
         #container {
             background: white;
@@ -22,6 +22,7 @@
             margin: auto;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              animation: slideDown 0.6s ease-in-out;
         }
         label, input {
             display: block;
@@ -56,7 +57,7 @@
         }
                 a{
          color:white;
-         padding:10px 20px;
+         padding:10px 80px;
          text-decoration: none;
     
          }
@@ -83,6 +84,29 @@
         .password-match.success {
             color: green;
         }
+             /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
     </style>
 <body>
 <h2>   Admin Sign-up Page</h2>
@@ -93,11 +117,11 @@
 <table>
 <tr>
       <td><label for="id">ID :</label></td>
-      <td><input type="number" name="id" required></td>
+      <td><input type="number" name="id" required placeholder="Enter ID"></td>
 </tr>
 <tr>
       <td><label for="name">Name :</label></td>
-      <td><input type="text" name="name" required></td> 
+      <td><input type="text" name="name" required placeholder="Enter Name"></td> 
 </tr>
 <tr>
      <td><label for="contact">Contact :</label></td>
